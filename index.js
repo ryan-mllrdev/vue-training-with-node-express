@@ -7,10 +7,13 @@ const express_1 = __importDefault(require("express"));
 const models_1 = __importDefault(require("./app/src/models/"));
 const User_service_1 = __importDefault(require("./app/src/core/services/user/User.service"));
 const cors_1 = __importDefault(require("cors"));
+const UploadFile_service_1 = __importDefault(require("./app/src/core/services/uploadFIle/UploadFile.service"));
 const app = express_1.default();
 app.use(cors_1.default());
 app.use(express_1.default.urlencoded({ extended: true }));
 app.use(express_1.default.json());
+// app.use(express.static(__dirname + "/public"));
+UploadFile_service_1.default(app);
 models_1.default.authenticate().then(() => {
     User_service_1.default(app);
 }).catch(error => console.error('Unable to connect to the database:', error));
