@@ -35,7 +35,7 @@ const UploadFile = (app: core.Express) => {
       res.send(error);
     } else {
       console.log('hello world');
-      res.send(`${file.destination}${file.filename}`);
+      res.send(`/uploads/${file.filename}`);
     }
   });
 };
